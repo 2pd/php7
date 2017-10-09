@@ -63,9 +63,3 @@ RUN wget https://sourceforge.net/projects/videlibri/files/Xidel/Xidel%200.9.6/xi
     mv download xidel.tar.gz  &&\
     tar -zxvf xidel.tar.gz  &&\
     mv xidel /usr/local/bin
-
-RUN mkdir /app
-
-COPY composer.json composer.lock /app/
-WORKDIR /app
-RUN  /usr/local/bin/composer install
