@@ -1,30 +1,33 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER Liang Shi <jeremy@pda.sh>
 
-RUN apt-get update && \
-    apt-get install -y language-pack-en-base && \
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Australia/Sydney
+
+RUN apt update && \
+    apt install -y language-pack-en-base && \
     export LC_ALL=en_US.UTF-8 && \
     export LANG=en_US.UTF-8 && \
-    apt-get install -y build-essential apt-transport-https \
+    apt install -y build-essential apt-transport-https \
     git \
     curl \
     wget \
     vim \
     pkg-config libssl-dev \
     libmariadbd-dev \
-    software-properties-common \
-    python-software-properties && \
-    apt-get update && \
+    software-properties-common && \
+    apt update && \
     apt-add-repository -y ppa:ondrej/php
 
     #install php 7 and package
-RUN apt-get update && apt-get install -y php7.1 \
+RUN apt update && apt install -y php7.1 \
     php7.1-bcmath \
     php7.1-curl \
     php7.1-sqlite3 \
     php7.1-dev \
-    php7.1-mbstring
+    php7.1-mbstring \
+    php7.1-zip
 
 # install latest libevent
 RUN wget -c https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz -P /usr/local/src  && \
