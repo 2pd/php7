@@ -27,7 +27,8 @@ RUN apt update && apt install -y php7.1 \
     php7.1-sqlite3 \
     php7.1-dev \
     php7.1-mbstring \
-    php7.1-zip
+    php7.1-zip \
+    php7.1-dom
 
 # install latest libevent
 RUN wget -c https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz -P /usr/local/src  && \
